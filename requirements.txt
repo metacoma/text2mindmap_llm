@@ -1,0 +1,6 @@
+openai
+pyperclip
+grpcio
+protobuf
+python-dotenv
+zipapps
