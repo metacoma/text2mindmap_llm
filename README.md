@@ -30,5 +30,5 @@ pip3 install -r requirements.txt
 7. Set your openapi token
 ```
 echo export OPENAI_API_KEY="XXX" > .env
-. env
+. ./.env
 ```
