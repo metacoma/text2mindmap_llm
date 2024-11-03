@@ -9,7 +9,7 @@ mv /tmp/freeplane-1.10.6/ ~/freeplane/
 2. Install freeplane grpc plugin
 Find the directory where freeplane stores plugin files (usually it is /usr/share/freeplane/plugins)
 ```
-curl -sL https://github.com/metacoma/freeplane_plugin_grpc/releases/download/0.0.4/org.freeplane.plugin.grpc.tgz | tar zxvf - -C ~/freeplane/plugins/
+curl -sL https://github.com/metacoma/freeplane_plugin_grpc/releases/download/0.0.5/org.freeplane.plugin.grpc.tgz | tar zxvf - -C ~/freeplane/plugins/
 ```
 3. Start freeplane
 ```
