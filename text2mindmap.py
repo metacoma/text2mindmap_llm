@@ -100,9 +100,7 @@ My clipboard data is:
 """
 
 
-
-
-if __name__ == "__main__":
+def text2mindmap(): 
     data = get_data()
 
     client = OpenAI()
