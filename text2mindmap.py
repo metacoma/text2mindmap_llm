@@ -13,11 +13,17 @@ import pyperclip
 from dotenv import load_dotenv
 
 load_dotenv()
+insert_mode = "current"
 
 def get_data():
+    global insert_mode
     parser = argparse.ArgumentParser(description="Read data from clipboard or stdin")
     parser.add_argument('--clipboard', action='store_true', help="Read data from clipboard if set")
+    parser.add_argument('--root', action='store_true', help="Insert into the root node")
     args = parser.parse_args()
+
+    if args.root:
+        insert_mode = "root"
 
     if args.clipboard:
         try:
@@ -127,6 +133,7 @@ def text2mindmap():
     title, detail, fulltext = extract_text_parts(data)
     # add head node
     mindmap_json = {
+        "_fp_import_root_node": insert_mode,
         title: {
             "detail": detail,
             "note": fulltext,
@@ -134,6 +141,7 @@ def text2mindmap():
         }
     } 
 
+    pprint.pprint(mindmap_json)
 
     fp.MindMapFromJSON(freeplane_pb2.MindMapFromJSONRequest(json=json.dumps(mindmap_json)))
 
