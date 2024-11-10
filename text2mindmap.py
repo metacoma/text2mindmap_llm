@@ -138,3 +138,5 @@ def text2mindmap():
     fp.MindMapFromJSON(freeplane_pb2.MindMapFromJSONRequest(json=json.dumps(mindmap_json)))
 
 
+if __name__ == "__main__":
+    text2mindmap()
