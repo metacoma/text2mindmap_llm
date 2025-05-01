@@ -70,33 +70,51 @@ The JSON object should follow these rules:
     Each mindmap node is represented as a key-value table to store contextual information.
     Add the key metrics for node into the key-value table
     There are three special keys for each node:
-        "detail": contains a portion of the original text from the clipboard related to this mindmap node.
-        "link": a URL to an online resource. If no link is available, create a Google search link for the term instead.
-        "color": a string in the format "red: <value>, green: <value>, blue: <value>, alpha: <value>".
+        "_uuid": A unique 12-digit hexadecimal (base 16) ID for the node.
+        "detail": A portion of the original clipboard text relevant to this mindmap node.
+        "link": A URL to an online resource. If no URL is available, generate a Google search link for the term instead.
+        "color": An eye-friendly color in the format "red: <value>, green: <value>, blue: <value>, alpha: <value>".
+        "tags": A comma-separated string of tags, e.g., "tag1,tag2,tag3".
+        "_relationship": A stringified array in the format "<UUID>:<relationship_type>,<UUID2>:<relationship_type2>".
     If a node’s value is a dict, it represents a child node where these rules apply as well.
     Don't use json array, use only json dicts
-
 Here’s an example JSON structure to follow:
     {
     "house": {
+        "_uuid": "4e7d52ab13c0",
         "detail": "The house is located on Suze Robertssonstraat 7",
+        "tags": "building,house",
         "link": "https://www.google.com/maps/place/Suze+Robertsonstraat+7",
         "color": "red: 255, green: 120, blue: 120, alpha: 255",
         "type": "building",
         "address": "Suze Robertsoonstraat 7",
         "floors": 18,
-        "apartment1": {
-            "residents": 3,
+        "apartment 1": {
+            "_uuid": "ff23ab781d44",
+            "tags": "apartment",
+            "residents": 2,
             "detail": "Family and child",
             "link": "https://www.google.com/search?q=apartment1&btnI=I",
             "color": "red: 120, green: 100, blue: 120, alpha: 255",
             "type": "apartment",
             "floor": "1",
-            "resident1": {
+            "resident 1": {
+                "_uuid": "a3f9b01c8d2e",
+                "_relationship": "ff23ab781d44:tenant",
+                "tags": "resident",
                 "name": "Steven Peterson",
                 "link": "https://en.wikipedia.org/wiki/Peterson,_Steven",
                 "sex": "male",
-                "age": "16"
+                "age": "42"
+            }
+            "resident 2": {
+                "_uuid": "b3f9b03a9d21",
+                "_relationship": "a3f9b01c8d2e:married,ff23ab781d44:tenant",
+                "tags": "resident",
+                "name": "Anna Bolein",
+                "link": "https://en.wikipedia.org/wiki/Anna,_Bolein",
+                "sex": "female",
+                "age": "42"
             }
         }
     }
