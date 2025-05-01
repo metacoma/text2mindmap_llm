@@ -8,9 +8,9 @@ OSX:
      ```  
   1. Install freeplane from dmg file:
      
-     apple https://sourceforge.net/projects/freeplane/files/freeplane%20stable/archive/1.10.6/Freeplane-1.10.6-apple.dmg/download
+     apple https://sourceforge.net/projects/freeplane/files/freeplane%20stable/Freeplane-1.12.10-apple.dmg/download
 
-     intel https://sourceforge.net/projects/freeplane/files/freeplane%20stable/archive/1.10.6/Freeplane-1.10.6-intel.dmg/download
+     intel https://sourceforge.net/projects/freeplane/files/freeplane%20stable/Freeplane-1.12.10-intel.dmg/download
 
   3. Install plugin
      Before install plugin, enable access to the plugin folder:
@@ -20,7 +20,7 @@ OSX:
      
      ```
      cd /Applications/Freeplane.app/Contents/app/plugins
-     sudo curl -sL https://github.com/metacoma/freeplane_plugin_grpc/releases/download/0.0.5/org.freeplane.plugin.grpc.tgz | tar zxvf - -C .
+     sudo curl -sL https://github.com/metacoma/freeplane_plugin_grpc/releases/download/0.0.8/org.freeplane.plugin.grpc.tgz | tar zxvf - -C .
      ```
    5. Install text2mindmap_llm
       ```
@@ -50,17 +50,17 @@ OSX:
 
   
 Step-by-step for most common Linux and BSD system:
-1. Install freeplane 1.10.6
+1. Install freeplane 1.12.x
 ```
-curl -o /tmp/freeplane.zip -L https://sourceforge.net/projects/freeplane/files/freeplane%20stable/archive/1.10.6/freeplane_bin-1.10.6.zip/download
+curl -o /tmp/freeplane.zip -L https://sourceforge.net/projects/freeplane/files/freeplane%20stable/freeplane_bin-1.12.10.zip/download
 unzip /tmp/freeplane.zip -d /tmp 
-mv /tmp/freeplane-1.10.6/ ~/freeplane/
+mv /tmp/freeplane-1.12.10/ ~/freeplane/
 ```
 
 2. Install freeplane grpc plugin
 Find the directory where freeplane stores plugin files (usually it is /usr/share/freeplane/plugins)
 ```
-curl -sL https://github.com/metacoma/freeplane_plugin_grpc/releases/download/0.0.5/org.freeplane.plugin.grpc.tgz | tar zxvf - -C ~/freeplane/plugins/
+curl -sL https://github.com/metacoma/freeplane_plugin_grpc/releases/download/0.0.8/org.freeplane.plugin.grpc.tgz | tar zxvf - -C ~/freeplane/plugins/
 ```
 3. Start freeplane
 ```
