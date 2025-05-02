@@ -39,6 +39,31 @@ class FreeplaneStub(object):
                 request_serializer=freeplane__pb2.NodeDetailsSetRequest.SerializeToString,
                 response_deserializer=freeplane__pb2.NodeDetailsSetResponse.FromString,
                 )
+        self.NodeNoteSet = channel.unary_unary(
+                '/freeplane.Freeplane/NodeNoteSet',
+                request_serializer=freeplane__pb2.NodeNoteSetRequest.SerializeToString,
+                response_deserializer=freeplane__pb2.NodeNoteSetResponse.FromString,
+                )
+        self.NodeTagSet = channel.unary_unary(
+                '/freeplane.Freeplane/NodeTagSet',
+                request_serializer=freeplane__pb2.NodeTagSetRequest.SerializeToString,
+                response_deserializer=freeplane__pb2.NodeTagSetResponse.FromString,
+                )
+        self.NodeTagAdd = channel.unary_unary(
+                '/freeplane.Freeplane/NodeTagAdd',
+                request_serializer=freeplane__pb2.NodeTagAddRequest.SerializeToString,
+                response_deserializer=freeplane__pb2.NodeTagAddResponse.FromString,
+                )
+        self.NodeConnect = channel.unary_unary(
+                '/freeplane.Freeplane/NodeConnect',
+                request_serializer=freeplane__pb2.NodeConnectRequest.SerializeToString,
+                response_deserializer=freeplane__pb2.NodeConnectResponse.FromString,
+                )
+        self.NodeAddIcon = channel.unary_unary(
+                '/freeplane.Freeplane/NodeAddIcon',
+                request_serializer=freeplane__pb2.NodeAddIconRequest.SerializeToString,
+                response_deserializer=freeplane__pb2.NodeAddIconResponse.FromString,
+                )
         self.Groovy = channel.unary_unary(
                 '/freeplane.Freeplane/Groovy',
                 request_serializer=freeplane__pb2.GroovyRequest.SerializeToString,
@@ -74,6 +99,11 @@ class FreeplaneStub(object):
                 request_serializer=freeplane__pb2.MindMapToJSONRequest.SerializeToString,
                 response_deserializer=freeplane__pb2.MindMapToJSONResponse.FromString,
                 )
+        self.GetCurrentNode = channel.unary_unary(
+                '/freeplane.Freeplane/GetCurrentNode',
+                request_serializer=freeplane__pb2.GetCurrentNodeRequest.SerializeToString,
+                response_deserializer=freeplane__pb2.GetCurrentNodeResponse.FromString,
+                )
 
 
 class FreeplaneServicer(object):
@@ -104,6 +134,36 @@ class FreeplaneServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def NodeDetailsSet(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def NodeNoteSet(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def NodeTagSet(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def NodeTagAdd(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def NodeConnect(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def NodeAddIcon(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -151,6 +211,12 @@ class FreeplaneServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetCurrentNode(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_FreeplaneServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -178,6 +244,31 @@ def add_FreeplaneServicer_to_server(servicer, server):
                     servicer.NodeDetailsSet,
                     request_deserializer=freeplane__pb2.NodeDetailsSetRequest.FromString,
                     response_serializer=freeplane__pb2.NodeDetailsSetResponse.SerializeToString,
+            ),
+            'NodeNoteSet': grpc.unary_unary_rpc_method_handler(
+                    servicer.NodeNoteSet,
+                    request_deserializer=freeplane__pb2.NodeNoteSetRequest.FromString,
+                    response_serializer=freeplane__pb2.NodeNoteSetResponse.SerializeToString,
+            ),
+            'NodeTagSet': grpc.unary_unary_rpc_method_handler(
+                    servicer.NodeTagSet,
+                    request_deserializer=freeplane__pb2.NodeTagSetRequest.FromString,
+                    response_serializer=freeplane__pb2.NodeTagSetResponse.SerializeToString,
+            ),
+            'NodeTagAdd': grpc.unary_unary_rpc_method_handler(
+                    servicer.NodeTagAdd,
+                    request_deserializer=freeplane__pb2.NodeTagAddRequest.FromString,
+                    response_serializer=freeplane__pb2.NodeTagAddResponse.SerializeToString,
+            ),
+            'NodeConnect': grpc.unary_unary_rpc_method_handler(
+                    servicer.NodeConnect,
+                    request_deserializer=freeplane__pb2.NodeConnectRequest.FromString,
+                    response_serializer=freeplane__pb2.NodeConnectResponse.SerializeToString,
+            ),
+            'NodeAddIcon': grpc.unary_unary_rpc_method_handler(
+                    servicer.NodeAddIcon,
+                    request_deserializer=freeplane__pb2.NodeAddIconRequest.FromString,
+                    response_serializer=freeplane__pb2.NodeAddIconResponse.SerializeToString,
             ),
             'Groovy': grpc.unary_unary_rpc_method_handler(
                     servicer.Groovy,
@@ -213,6 +304,11 @@ def add_FreeplaneServicer_to_server(servicer, server):
                     servicer.MindMapToJSON,
                     request_deserializer=freeplane__pb2.MindMapToJSONRequest.FromString,
                     response_serializer=freeplane__pb2.MindMapToJSONResponse.SerializeToString,
+            ),
+            'GetCurrentNode': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetCurrentNode,
+                    request_deserializer=freeplane__pb2.GetCurrentNodeRequest.FromString,
+                    response_serializer=freeplane__pb2.GetCurrentNodeResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -306,6 +402,91 @@ class Freeplane(object):
         return grpc.experimental.unary_unary(request, target, '/freeplane.Freeplane/NodeDetailsSet',
             freeplane__pb2.NodeDetailsSetRequest.SerializeToString,
             freeplane__pb2.NodeDetailsSetResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def NodeNoteSet(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/freeplane.Freeplane/NodeNoteSet',
+            freeplane__pb2.NodeNoteSetRequest.SerializeToString,
+            freeplane__pb2.NodeNoteSetResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def NodeTagSet(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/freeplane.Freeplane/NodeTagSet',
+            freeplane__pb2.NodeTagSetRequest.SerializeToString,
+            freeplane__pb2.NodeTagSetResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def NodeTagAdd(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/freeplane.Freeplane/NodeTagAdd',
+            freeplane__pb2.NodeTagAddRequest.SerializeToString,
+            freeplane__pb2.NodeTagAddResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def NodeConnect(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/freeplane.Freeplane/NodeConnect',
+            freeplane__pb2.NodeConnectRequest.SerializeToString,
+            freeplane__pb2.NodeConnectResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def NodeAddIcon(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/freeplane.Freeplane/NodeAddIcon',
+            freeplane__pb2.NodeAddIconRequest.SerializeToString,
+            freeplane__pb2.NodeAddIconResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -425,5 +606,22 @@ class Freeplane(object):
         return grpc.experimental.unary_unary(request, target, '/freeplane.Freeplane/MindMapToJSON',
             freeplane__pb2.MindMapToJSONRequest.SerializeToString,
             freeplane__pb2.MindMapToJSONResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetCurrentNode(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/freeplane.Freeplane/GetCurrentNode',
+            freeplane__pb2.GetCurrentNodeRequest.SerializeToString,
+            freeplane__pb2.GetCurrentNodeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

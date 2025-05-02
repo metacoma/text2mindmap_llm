@@ -125,10 +125,17 @@ My clipboard data is:
 
 
 def text2mindmap(): 
+    channel = grpc.insecure_channel('localhost:50051')
+    fp = freeplane_pb2_grpc.FreeplaneStub(channel)
+    
+    current_node = fp.GetCurrentNode(freeplane_pb2.GetCurrentNodeRequest())
+    print(current_node.node_id)
+
     data = get_data()
 
     client = OpenAI()
     completion = client.chat.completions.create(
+
         model="gpt-4o",
         messages=[
             {"role": "user", "content": prompt3() + data}
@@ -145,13 +152,11 @@ def text2mindmap():
 
     print(json_string)
 
-    channel = grpc.insecure_channel('localhost:50051')
-    fp = freeplane_pb2_grpc.FreeplaneStub(channel)
 
     title, detail, fulltext = extract_text_parts(data)
     # add head node
     mindmap_json = {
-        "_fp_import_root_node": insert_mode,
+        "_fp_import_root_node": current_node.node_id,
         title: {
             "detail": detail,
             "note": fulltext,
