@@ -44,7 +44,7 @@ def get_data():
 
 def extract_text_parts(text, max_title_length=40, min_title_length=20, detail_lines=4):
     words = text.split()
-    lines = text.splitlines() or [text] 
+    lines = text.splitlines() or [text]
 
     title = ""
     for i in range(len(words)):
@@ -53,7 +53,7 @@ def extract_text_parts(text, max_title_length=40, min_title_length=20, detail_li
             title = current_title
             break
     else:
-        title = " ".join(words[:5]) 
+        title = " ".join(words[:5])
 
     details = "\n".join(lines[:detail_lines])
 
@@ -71,6 +71,7 @@ The JSON object should follow these rules:
     Add the key metrics for node into the key-value table
     There are three special keys for each node:
         "_uuid": A unique 12-digit hexadecimal (base 16) ID for the node.
+        "icons": a list of emojis in the format emoj-<EMOJI_CODE> using uppercase Unicode code points, example: emoji-1F3E0
         "detail": A portion of the original clipboard text relevant to this mindmap node.
         "link": A URL to an online resource. If no URL is available, generate a Google search link for the term instead.
         "color": An eye-friendly color in the format "red: <value>, green: <value>, blue: <value>, alpha: <value>".
@@ -83,6 +84,7 @@ Here’s an example JSON structure to follow:
     "house": {
         "_uuid": "4e7d52ab13c0",
         "detail": "The house is located on Suze Robertssonstraat 7",
+        "icons": "emoji-1F3E0",
         "tags": "building,house",
         "link": "https://www.google.com/maps/place/Suze+Robertsonstraat+7",
         "color": "red: 255, green: 120, blue: 120, alpha: 255",
@@ -92,6 +94,7 @@ Here’s an example JSON structure to follow:
         "apartment 1": {
             "_uuid": "ff23ab781d44",
             "tags": "apartment",
+            "icons": "emoji-1F46A",
             "residents": 2,
             "detail": "Family and child",
             "link": "https://www.google.com/search?q=apartment1&btnI=I",
@@ -101,15 +104,17 @@ Here’s an example JSON structure to follow:
             "resident 1": {
                 "_uuid": "a3f9b01c8d2e",
                 "_relationship": "ff23ab781d44:tenant",
+                "icons": "emoji-1F468",
                 "tags": "resident",
                 "name": "Steven Peterson",
                 "link": "https://en.wikipedia.org/wiki/Peterson,_Steven",
                 "sex": "male",
                 "age": "42"
-            }
+            },
             "resident 2": {
                 "_uuid": "b3f9b03a9d21",
                 "_relationship": "a3f9b01c8d2e:married,ff23ab781d44:tenant",
+                "icons": "emoji-1F469",
                 "tags": "resident",
                 "name": "Anna Bolein",
                 "link": "https://en.wikipedia.org/wiki/Anna,_Bolein",
@@ -124,10 +129,10 @@ My clipboard data is:
 """
 
 
-def text2mindmap(): 
+def text2mindmap():
     channel = grpc.insecure_channel('localhost:50051')
     fp = freeplane_pb2_grpc.FreeplaneStub(channel)
-    
+
     current_node = fp.GetCurrentNode(freeplane_pb2.GetCurrentNodeRequest())
     print(current_node.node_id)
 
@@ -162,7 +167,7 @@ def text2mindmap():
             "note": fulltext,
             **parsed_json
         }
-    } 
+    }
 
     pprint.pprint(mindmap_json)
 
