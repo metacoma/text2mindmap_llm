@@ -68,6 +68,8 @@ def prompt3():
 The JSON object should follow these rules:
 
     Each mindmap node is represented as a key-value table to store contextual information.
+    Words in the node name should be separated by spaces.
+    The node name should with words separated by spaces.
     Add the key metrics for node into the key-value table
     There are three special keys for each node:
         "_uuid": A unique 12-digit hexadecimal (base 16) ID for the node.
